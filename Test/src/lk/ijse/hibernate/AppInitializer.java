@@ -14,8 +14,8 @@ public class AppInitializer {
     public static void main(String[] args) {
 
         Customer customer = new Customer();
-        customer.setId(1L);
-        customer.setName("Thinusha");
+        customer.setId(3L);
+        customer.setName("Dilhara");
         customer.setAddress("Galle");
         customer.setSalary(50000.00);
 

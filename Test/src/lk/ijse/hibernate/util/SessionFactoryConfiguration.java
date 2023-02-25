@@ -20,7 +20,10 @@ public class SessionFactoryConfiguration {
     private static SessionFactoryConfiguration factoryConfiguration;
     private SessionFactory sessionFactory;
 
-    private SessionFactoryConfiguration(){}
+    private SessionFactoryConfiguration(){
+        sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder().
+                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
+    }
 
     public static SessionFactoryConfiguration getInstance() {
         return (null == factoryConfiguration) ?
@@ -29,7 +32,7 @@ public class SessionFactoryConfiguration {
 
     public Session getSession() throws HibernateException {
         // creating the service registry
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+//        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
 
         // creating the metadata object
         /*Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().
@@ -37,8 +40,8 @@ public class SessionFactoryConfiguration {
 
 //        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        sessionFactory = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().
-                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
+       /* sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder().
+                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();*/
 
         Session session = sessionFactory.openSession();
 
