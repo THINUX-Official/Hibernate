@@ -18,6 +18,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryConfiguration {
 
     private static SessionFactoryConfiguration factoryConfiguration;
+    private SessionFactory sessionFactory;
+
+    private SessionFactoryConfiguration(){}
 
     public static SessionFactoryConfiguration getInstance() {
         return (null == factoryConfiguration) ?
@@ -29,10 +32,13 @@ public class SessionFactoryConfiguration {
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
 
         // creating the metadata object
-        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().
-                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
+        /*Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().
+                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();*/
 
-        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+//        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+
+        sessionFactory = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().
+                applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
 
         Session session = sessionFactory.openSession();
 

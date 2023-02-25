@@ -8,6 +8,7 @@ package lk.ijse.hibernate;
 import lk.ijse.hibernate.entity.Customer;
 import lk.ijse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class AppInitializer {
     public static void main(String[] args) {
@@ -19,8 +20,9 @@ public class AppInitializer {
         customer.setSalary(50000.00);
 
         Session session = SessionFactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
         session.save(customer);
-
+        transaction.commit();
         session.close();
     }
 }
