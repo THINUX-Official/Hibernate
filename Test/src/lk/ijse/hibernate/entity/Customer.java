@@ -1,31 +1,40 @@
 package lk.ijse.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lk.ijse.hibernate.embendded.CustName;
+
+import javax.persistence.*;
 
 /*
     @author THINUX
     @created 18-Feb-23
 */
-@Entity
+@Entity(name = "customer")
 public class Customer {
     @Id
+    @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+
+//    @Column(name = "customer_name")
+    private CustName name;
+    @Column(name = "customer_address")
     private String address;
+
+    @Column(name = "customer_salary")
     private double salary;
+
+    @Column(name = "customer_age", columnDefinition = "SMALLINT")
+    private int age;
 
     public Customer() {
     }
 
-    public Customer(long id, String name, String address, double salary) {
+    public Customer(long id, CustName name, String address, double salary, int age) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
+        this.age = age;
     }
 
     public long getId() {
@@ -36,11 +45,11 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
+    public CustName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(CustName name) {
         this.name = name;
     }
 
@@ -60,13 +69,22 @@ public class Customer {
         this.salary = salary;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name=" + name +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
+                ", age=" + age +
                 '}';
     }
 }
