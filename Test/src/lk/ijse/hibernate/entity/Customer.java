@@ -2,8 +2,11 @@ package lk.ijse.hibernate.entity;
 
 import lk.ijse.hibernate.embendded.CustName;
 import lk.ijse.hibernate.embendded.MobileNo;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,9 @@ public class Customer {
             name = "customer_mobile_no",
             joinColumns = @JoinColumn(name = "customer_id"))
     private List<MobileNo> phoneNos = new ArrayList<>(); // If you did not assign this to ArrayList, u will face a NULL POINT EXCEPTION.
+
+    @CreationTimestamp
+    private Timestamp date;
 
     public Customer() {
     }

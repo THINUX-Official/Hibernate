@@ -37,6 +37,7 @@ public class AppInitializer {
         phoneNo.add(new MobileNo("HOME", "0915474568"));
         customer.setPhoneNos(phoneNo);
 
+
         Session session = SessionFactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(customer);
