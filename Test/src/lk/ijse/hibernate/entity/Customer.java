@@ -1,8 +1,11 @@
 package lk.ijse.hibernate.entity;
 
 import lk.ijse.hibernate.embendded.CustName;
+import lk.ijse.hibernate.embendded.MobileNo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
     @author THINUX
@@ -26,15 +29,22 @@ public class Customer {
     @Column(name = "customer_age", columnDefinition = "SMALLINT")
     private int age;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "customer_mobile_no",
+            joinColumns = @JoinColumn(name = "customer_id"))
+    private List<MobileNo> phoneNos = new ArrayList<>(); // If you did not assign this to ArrayList, u will face a NULL POINT EXCEPTION.
+
     public Customer() {
     }
 
-    public Customer(long id, CustName name, String address, double salary, int age) {
+    public Customer(long id, CustName name, String address, double salary, int age, List<MobileNo> phoneNos) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
         this.age = age;
+        this.phoneNos = phoneNos;
     }
 
     public long getId() {
@@ -77,6 +87,14 @@ public class Customer {
         this.age = age;
     }
 
+    public List<MobileNo> getPhoneNos() {
+        return phoneNos;
+    }
+
+    public void setPhoneNos(List<MobileNo> phoneNos) {
+        this.phoneNos = phoneNos;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -85,6 +103,7 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
                 ", age=" + age +
+                ", phoneNos=" + phoneNos +
                 '}';
     }
 }
