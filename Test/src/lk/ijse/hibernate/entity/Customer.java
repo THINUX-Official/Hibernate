@@ -18,21 +18,23 @@ import java.util.List;
 public class Customer {
     @Id
     @Column(name = "customer_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) // Generate the next id automatically.
     private long id;
 
 //    @Column(name = "customer_name")
-    private CustName name;
+    private CustName name; // This is not a String type.
+
     @Column(name = "customer_address")
     private String address;
 
     @Column(name = "customer_salary")
     private double salary;
 
+    // SMALLINT - It is a datatype in some databases systems such as MySQL, which is used to store integer value in a smaller range than the 'INT' data type.
     @Column(name = "customer_age", columnDefinition = "SMALLINT")
     private int age;
 
-    @ElementCollection
+    @ElementCollection //
     @CollectionTable(
             name = "customer_mobile_no",
             joinColumns = @JoinColumn(name = "customer_id"))
