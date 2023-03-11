@@ -10,8 +10,6 @@ import lk.ijse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.Serializable;
-
 public class CustomerRepository {
     private final Session session;
 

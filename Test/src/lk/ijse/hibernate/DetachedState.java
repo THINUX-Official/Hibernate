@@ -1,9 +1,12 @@
+/*
 package lk.ijse.hibernate;
 
+*/
 /*
     @author THINUX
     @created 04-Mar-23
-*/
+*//*
+
 
 import lk.ijse.hibernate.embendded.CustName;
 import lk.ijse.hibernate.entity.Customer;
@@ -22,8 +25,8 @@ public class DetachedState {
         Customer customer = new Customer();
 
         customer.setAddress("Galle");
-        customer.setAge(30);
-        customer.setSalary(500000);
+//        customer.setAge(30);
+//        customer.setSalary(500000);
 
         session.save(customer);
 
@@ -49,3 +52,4 @@ public class DetachedState {
 
     }
 }
+*/

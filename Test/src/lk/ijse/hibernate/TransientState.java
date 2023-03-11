@@ -1,12 +1,14 @@
+/*
 package lk.ijse.hibernate;
 
+*/
 /*
     @author THINUX
     @created 04-Mar-23
-*/
+*//*
 
-import lk.ijse.hibernate.embendded.CustName;
-import lk.ijse.hibernate.entity.Customer;
+
+import lk.ijse.hibernate.entity.Customer1;
 import lk.ijse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,7 +21,7 @@ public class TransientState {
         Transaction transaction = session.beginTransaction();
 
         // This will not go to Database because of this is in the Transient state.
-        Customer customer = new Customer();
+        Customer1 customer = new Customer1();
         customer.setAddress("Transient");
         customer.setAge(23);
 
@@ -32,3 +34,4 @@ public class TransientState {
         session.close();
     }
 }
+*/

@@ -79,16 +79,16 @@ public class AppInitializer {
         custName.setMiddleName("Supun");
         custName.setLastName("Dilhara");
 
-        customer.setName(custName);
+//        customer.setName(custName);
 
         customer.setAddress("Galle");
-        customer.setSalary(50000.00);
-        customer.setAge(23);
+//        customer.setSalary(50000.00);
+//        customer.setAge(23);
 
         List<MobileNo> phoneNo = new ArrayList<>();
         phoneNo.add(new MobileNo("MOBILE", "0774002633"));
         phoneNo.add(new MobileNo("HOME", "0915474568"));
-        customer.setPhoneNos(phoneNo);
+//        customer.setPhoneNos(phoneNo);
 
 
         Session session = SessionFactoryConfiguration.getInstance().getSession();

@@ -6,14 +6,10 @@ package lk.ijse.hibernate.util;
 */
 
 import lk.ijse.hibernate.entity.Customer;
+import lk.ijse.hibernate.entity.Orders;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryConfiguration {
@@ -25,7 +21,10 @@ public class SessionFactoryConfiguration {
         /*sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();*/
 
-        sessionFactory = new Configuration().configure().addAnnotatedClass(Customer.class).buildSessionFactory();
+        sessionFactory = new Configuration().configure()
+                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Orders.class)
+                .buildSessionFactory();
     }
 
     public static SessionFactoryConfiguration getInstance() {
